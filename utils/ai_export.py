@@ -52,18 +52,18 @@ def export_ai_results_to_csv(ai_tree, stats, parent_window):
             
             # === ENCABEZADO DEL REPORTE ===
             writer.writerow(["=" * 80])
-            writer.writerow(["SPYNET V1.0.0 - REPORTE DE ANÁLISIS DE INTELIGENCIA ARTIFICIAL"])
+            writer.writerow(["SPYNET V1.0.0 - REPORTE DE ANALISIS DE INTELIGENCIA ARTIFICIAL"])
             writer.writerow(["=" * 80])
             writer.writerow([f"Fecha de Generación: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"])
             writer.writerow([])
             
             # === ESTADÍSTICAS GENERALES ===
-            writer.writerow(["ESTADÍSTICAS GENERALES"])
+            writer.writerow(["ESTADiSTICAS GENERALES"])
             writer.writerow(["-" * 80])
-            writer.writerow(["Métrica", "Valor"])
+            writer.writerow(["Metrica", "Valor"])
             writer.writerow(["Paquetes Analizados por IA", stats.get('scanned', 0)])
             writer.writerow(["Alertas Sospechosas (Warning)", stats.get('suspicious', 0)])
-            writer.writerow(["Alertas Críticas (Ataques)", stats.get('critical', 0)])
+            writer.writerow(["Alertas Criticas (Ataques)", stats.get('critical', 0)])
             writer.writerow(["Total de Amenazas Detectadas", total_alerts])
             
             # Calcular nivel de amenaza
@@ -81,7 +81,7 @@ def export_ai_results_to_csv(ai_tree, stats, parent_window):
             scanned = stats.get('scanned', 0)
             if scanned > 0:
                 threat_percentage = (total_threats / scanned) * 100
-                writer.writerow(["Porcentaje de Tráfico Malicioso", f"{threat_percentage:.2f}%"])
+                writer.writerow(["Porcentaje de Trafico Malicioso", f"{threat_percentage:.2f}%"])
             
             writer.writerow([])
             
@@ -92,8 +92,8 @@ def export_ai_results_to_csv(ai_tree, stats, parent_window):
             # Verificar si hay alertas
             if total_alerts == 0:
                 writer.writerow(["Estado", "SIN AMENAZAS DETECTADAS"])
-                writer.writerow(["Descripción", "El modelo de IA analizó el tráfico y no encontró patrones sospechosos."])
-                writer.writerow(["Recomendación", "Continuar monitoreando el tráfico de red regularmente."])
+                writer.writerow(["Descripcion", "El modelo de IA analizó el tráfico y no encontró patrones sospechosos."])
+                writer.writerow(["Recomendacion", "Continuar monitoreando el tráfico de red regularmente."])
             else:
                 # Encabezados de la tabla de alertas
                 writer.writerow([
@@ -112,7 +112,7 @@ def export_ai_results_to_csv(ai_tree, stats, parent_window):
                     
                     # Determinar severidad por el tag
                     if 'critical' in tags:
-                        severity = "CRÍTICO"
+                        severity = "CRITICO"
                     elif 'suspicious' in tags:
                         severity = "SOSPECHOSO"
                     else:
@@ -139,7 +139,7 @@ def export_ai_results_to_csv(ai_tree, stats, parent_window):
         if total_alerts == 0:
             mensaje_confirmacion = (
                 f"✅ Reporte de IA exportado correctamente a:\n\n{filepath}\n\n"
-                f"📊 Estadísticas:\n"
+                f"📊 Estadisticas:\n"
                 f"   • Paquetes analizados: {stats.get('scanned', 0)}\n"
                 f"   • Amenazas detectadas: 0\n"
                 f"   • Estado: RED SEGURA"
@@ -147,10 +147,10 @@ def export_ai_results_to_csv(ai_tree, stats, parent_window):
         else:
             mensaje_confirmacion = (
                 f"⚠️ Reporte de IA exportado correctamente a:\n\n{filepath}\n\n"
-                f"📊 Estadísticas:\n"
+                f"📊 Estadisticas:\n"
                 f"   • Paquetes analizados: {stats.get('scanned', 0)}\n"
                 f"   • Alertas sospechosas: {stats.get('suspicious', 0)}\n"
-                f"   • Alertas críticas: {stats.get('critical', 0)}\n"
+                f"   • Alertas criticas: {stats.get('critical', 0)}\n"
                 f"   • Total de amenazas: {total_alerts}"
             )
         
@@ -175,7 +175,7 @@ def export_ai_results_to_csv(ai_tree, stats, parent_window):
             except Exception as e:
                 messagebox.showwarning(
                     "Advertencia",
-                    f"No se pudo abrir el archivo automáticamente:\n{e}\n\nPuedes abrirlo manualmente desde:\n{filepath}",
+                    f"No se pudo abrir el archivo automaticamente:\n{e}\n\nPuedes abrirlo manualmente desde:\n{filepath}",
                     parent=parent_window
                 )
             
