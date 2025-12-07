@@ -167,7 +167,7 @@ class PacketHandler:
                     pass
 
             # --- 4. GeoIP ---
-            country = "LOC"
+            country = "Local/Privada"
             if proto_name != "ARP":
                 try:
                     country = self.geoip.get_country_code(ip_src)
@@ -215,4 +215,5 @@ class PacketHandler:
         except Exception as e:
             # Imprimir error solo si es crítico, para no ensuciar la consola
             # print(f"[Handler Error] {e}") 
+
             return None
