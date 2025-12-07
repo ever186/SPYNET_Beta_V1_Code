@@ -12,9 +12,12 @@ Características • Instalación • Uso • Arquitectura • Contribuir
 
 📋 Descripción
 SPYNET es un analizador de tráfico de red avanzado que combina técnicas tradicionales de inspección de paquetes con inteligencia artificial (Deep Learning) para detectar amenazas en tiempo real. Construido con Python, Tkinter, Scapy y TensorFlow, ofrece una interfaz gráfica intuitiva para monitorear, analizar y visualizar el tráfico de tu red.
-🎯 Características Principales
+## 🎯 Características Principales
 
-🤖 Detección de Amenazas con IA
+### 🤖 Detección de Amenazas con IA
+
+<img width="1919" height="1079" alt="Captura de pantalla 2025-12-07 132958" src="https://github.com/user-attachments/assets/f63e8283-8692-408e-9131-e7bb1de5b0c1" />
+
 
 Modelo de Deep Learning con 78 características
 Clasificación de ataques: DoS, DDoS, Port Scan, Botnet, Brute Force, Web Attacks
@@ -22,7 +25,11 @@ Análisis en tiempo real con hilo dedicado
 Umbrales configurables para reducir falsos positivos
 
 
-📊 Visualización en Tiempo Real
+### 📊 Visualización en Tiempo Real
+
+<img width="1917" height="1079" alt="Captura de pantalla 2025-12-07 133025" src="https://github.com/user-attachments/assets/d0a6552d-4075-4eb0-927d-ec8d6af8cdf7" />
+<img width="1919" height="1079" alt="Captura de pantalla 2025-12-07 132748" src="https://github.com/user-attachments/assets/336af761-17e0-4f4a-9b8a-ec6791eebc75" />
+
 
 Gráficos dinámicos de tráfico
 Estadísticas de protocolos, países y puertos
@@ -30,7 +37,10 @@ Mapa de red con NetworkX
 Dashboard exportable a PNG
 
 
-🔍 Análisis Profundo de Paquetes
+### 🔍 Análisis Profundo de Paquetes
+
+<img width="1919" height="1079" alt="Captura de pantalla 2025-12-07 132346" src="https://github.com/user-attachments/assets/ae9c9ea7-c4ca-4636-b1b4-632f4a5b1765" />
+<img width="1919" height="1079" alt="Captura de pantalla 2025-12-07 132534" src="https://github.com/user-attachments/assets/fc303edb-a983-4195-8617-9bb17a8b4051" />
 
 Inspección completa de TCP/UDP/ICMP/ARP
 Detección de TCP Handshake (3-way)
@@ -40,20 +50,13 @@ Geolocalización de IPs con MaxMind GeoIP
 
 🛡️ Seguridad y Auditoría
 
+<img width="1919" height="1079" alt="Captura de pantalla 2025-12-07 133119" src="https://github.com/user-attachments/assets/c16063b7-0cc8-4701-aff3-53e392ed3bb2" />
+<img width="1919" height="1079" alt="Captura de pantalla 2025-12-07 132549" src="https://github.com/user-attachments/assets/29997901-db7e-43b2-a3dd-1d215ea968a5" />
+
 Detección de puertos inseguros
 Integración con VirusTotal API
 Exportación de reportes a CSV
 Captura y análisis de archivos PCAP
-
-
-🌐 Escaneo de Red
-
-Descubrimiento de dispositivos con ARP
-Escaneo de puertos comunes
-Identificación de fabricantes (MAC vendor lookup)
-
-
-
 
 🖼️ Capturas de Pantalla
 <div align="center">
