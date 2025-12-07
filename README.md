@@ -8,6 +8,7 @@ Mostrar imagen
 Mostrar imagen
 Monitoreo de red en tiempo real con detección de amenazas mediante Deep Learning
 Características • Instalación • Uso • Arquitectura • Contribuir
+    ### release: coming soon
 </div>
 
 📋 Descripción
