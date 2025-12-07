@@ -8,11 +8,13 @@ Mostrar imagen
 Mostrar imagen
 Monitoreo de red en tiempo real con detección de amenazas mediante Deep Learning
 Características • Instalación • Uso • Arquitectura • Contribuir
-    ### release: coming soon
 </div>
 
 📋 Descripción
 SPYNET es un analizador de tráfico de red avanzado que combina técnicas tradicionales de inspección de paquetes con inteligencia artificial (Deep Learning) para detectar amenazas en tiempo real. Construido con Python, Tkinter, Scapy y TensorFlow, ofrece una interfaz gráfica intuitiva para monitorear, analizar y visualizar el tráfico de tu red.
+### release: 
+coming soon
+
 ## 🎯 Características Principales
 
 ### 🤖 Detección de Amenazas con IA
