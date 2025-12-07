@@ -332,8 +332,9 @@ Este proyecto está licenciado bajo la MIT License - ver el archivo LICENSE para
 HackCat - GitHub
 Si tienes preguntas o sugerencias, no dudes en contactar:
 
-📧 Email: [tu-email@ejemplo.com]
+📧 Linkedln: https://www.linkedin.com/in/ever-junior-leiva-arias-371b06200/
 🐙 GitHub Issues: Reportar un problema
+
 
 
 🙏 Agradecimientos
