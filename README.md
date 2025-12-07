@@ -171,53 +171,7 @@ Opciones → Configurar API de VirusTotal...
 
 # Analizar IP/Dominio:
 Clic derecho en una fila → Analizar con VirusTotal
-```
 
----
-
-## 🏗️ Arquitectura del Proyecto
-```
-spynet/
-├── main.py                    # Punto de entrada principal
-├── config.py                  # Configuración global
-├── ia_config.py               # Umbrales del modelo IA
-│
-├── core/                      # Lógica de negocio
-│   ├── network_analyzer.py    # Controlador principal
-│   ├── packet_handler.py      # Procesador de paquetes
-│   └── anomaly_detector.py    # Detector de IA (78 features)
-│
-├── ui/                        # Interfaz gráfica
-│   ├── main_window.py         # Ventana principal
-│   ├── splash_screen.py       # Pantalla de carga
-│   ├── traffic_tab.py         # Pestaña de tráfico
-│   ├── devices_tab.py         # Pestaña de dispositivos
-│   ├── visualization_tab.py   # Pestaña de gráficos
-│   ├── network_graph_tab.py   # Mapa de red
-│   ├── AI_tab.py              # Pestaña de IA
-│   └── dialogs.py             # Diálogos y tooltips
-│
-├── utils/                     # Utilidades
-│   ├── network_utils.py       # Funciones de red
-│   ├── file_operations.py     # I/O de archivos
-│   ├── geoip_handler.py       # Geolocalización
-│   ├── ai_export.py           # Exportar reportes IA
-│   └── installer.py           # Instalador de dependencias
-│
-├── model/                     # Modelo de Deep Learning
-│   ├── cicids2017_model.h5    # Red neuronal entrenada
-│   └── cicids2017_scaler.pkl  # Normalizador de datos
-│
-├── db/                        # Bases de datos
-│   └── GeoLite2-City.mmdb     # GeoIP (no incluido)
-│
-├── icons/                     # Iconos de la UI
-│   ├── start.png
-│   ├── stop.png
-│   ├── pause.png
-│   └── ...
-│
-└── requirements.txt           # Dependencias Python
 Flujo de Datos
 mermaidgraph LR
     A[Captura de Paquetes<br/>Scapy] --> B[PacketHandler<br/>Procesar]
@@ -332,6 +286,7 @@ bashpip install scapy
 pip install -r requirements.txt
 La IA no detecta nada
 
+````
 Verificar que cicids2017_model.h5 y cicids2017_scaler.pkl existan en /model/
 Revisar umbrales en ia_config.py (reducir CONFIDENCE_THRESHOLD)
 Activar DEBUG_MODE = True en ia_config.py para ver logs
