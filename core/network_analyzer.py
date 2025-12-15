@@ -75,7 +75,12 @@ class NetworkAnalyzer:
         self.window.title(WINDOW_TITLE)
         self.window.geometry(WINDOW_GEOMETRY)
         self.window.configure(bg=WINDOW_BG_COLOR)
-        self.window.iconbitmap("assets/img/telarana.ico")
+        #self.window.iconbitmap("assets/img/telarana.ico")
+        if sys.platform.startswith("win"):
+            self.window.iconbitmap(os.path.join(self.SCRIPT_DIR, "assets", "img", "telarana.ico"))
+        else:
+            icon = tk.PhotoImage(file=os.path.join(self.SCRIPT_DIR, "assets", "img", "telarana.png"))
+            self.window.iconphoto(True, icon)
             
         self.monitoring_active = False
         self.is_paused = False
@@ -525,3 +530,4 @@ class NetworkAnalyzer:
 
         self.stop_monitoring()
         self.window.destroy() 
+
