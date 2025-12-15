@@ -20,6 +20,8 @@ from core.anomaly_detector import AIAnomalyDetector
 from core.packet_handler import PacketHandler
 from ui.main_window import setup_menubar, setup_interface
 
+from core.sniffer_manager import SnifferManager
+
 try:
     from config import *
 except ImportError:
@@ -104,6 +106,12 @@ class NetworkAnalyzer:
         self.anomaly_detector = AIAnomalyDetector(model_path=IA_MODEL_PATH, scaler_path=IA_SCALER_PATH)
         self.packet_handler = PacketHandler(self)
 
+        self.sniffer_manager = SnifferManager(
+            packet_callback=self._packet_callback_bridge,
+            status_callback=self._sniffer_status_callback,
+            use_pcap=True
+        )
+
         # Inicializar UI
         self.traffic_tree = None
         self.devices_tree = None
@@ -125,6 +133,25 @@ class NetworkAnalyzer:
             if os.path.exists(pcap_arg) and pcap_arg.endswith('.pcap'):
                 print(f"[CLI] Detectado archivo PCAP: {pcap_arg}")
                 self.window.after(1000, lambda: self.import_pcap(pcap_arg))
+
+
+    # ==========================================================================
+    # BRIDGES PARA EL SNIFFER (NUEVO)
+    # ==========================================================================
+
+    def _packet_callback_bridge(self, pkt):
+        """Recibe paquetes del SnifferManager y los pasa al procesador."""
+        # Se llama desde el hilo del dispatcher del sniffer
+        if self.monitoring_active and not self.is_paused:
+            self._handle_packet(pkt, from_import=False)
+
+    def _sniffer_status_callback(self, msg, level="INFO"):
+        """Recibe logs del SnifferManager y actualiza la UI o imprime."""
+        print(f"[{level}] {msg}")
+        # Opcional: Mostrar errores críticos en messagebox
+        if level == "ERROR" and "permisos" in msg.lower():
+            self.window.after(0, lambda: messagebox.showerror("Error de Permisos", msg))
+            self.stop_monitoring()
 
     # ==========================================================================
     #  NUEVO: HILO SEPARADO PARA ANÁLISIS DE IA
@@ -195,19 +222,29 @@ class NetworkAnalyzer:
         if not self.monitoring_active:
             self.monitoring_active = True
             self.is_paused = False
-            self.stop_sniff_event.clear()
+            #self.stop_sniff_event.clear()
             self.start_button.config(state=tk.DISABLED)
             self.pause_button.config(state=tk.NORMAL)
             self.stop_button.config(state=tk.NORMAL)
-            self.update_status("Analizando", self.connection_count)
-            self.traffic_thread = threading.Thread(target=self.analyze_traffic, daemon=True)
-            self.traffic_thread.start()
-            self.viz_tab_handler.update_graph()
+            #self.update_status("Capturando", self.connection_count)
+            #self.traffic_thread = threading.Thread(target=self.analyze_traffic, daemon=True)
+            #self.traffic_thread.start()
+            #self.viz_tab_handler.update_graph()
+
+            try:
+                self.sniffer_manager.start()
+                self.update_status("Capturando", self.connection_count)
+                if self.viz_tab_handler: self.viz_tab_handler.update_graph()
+            except Exception as e:
+                self.monitoring_active = False
+                messagebox.showerror("Error al iniciar", str(e))
+                self.stop_monitoring()
 
     def stop_monitoring(self):
         if self.monitoring_active:
             self.monitoring_active = False
-            self.stop_sniff_event.set()
+            #self.stop_sniff_event.set()
+            self.sniffer_manager.stop()
             self.start_button.config(state=tk.NORMAL)
             self.pause_button.config(state=tk.DISABLED)
             self.stop_button.config(state=tk.DISABLED)
@@ -219,7 +256,7 @@ class NetworkAnalyzer:
     def toggle_pause(self):
         if self.monitoring_active:
             self.is_paused = not self.is_paused
-            status = "Pausado" if self.is_paused else "Analizando"
+            status = "Pausado" if self.is_paused else "Capturando"
             self.update_status(status, self.connection_count)
 
     def analyze_traffic(self):
@@ -261,7 +298,7 @@ class NetworkAnalyzer:
             if not filter_text or filter_text in ' '.join(map(str, table_row)).lower():
                 self.window.after(0, lambda r=table_row, t=tags: self.traffic_tree.insert('', 'end', values=r, tags=t))
 
-            self.window.after(0, lambda c=self.connection_count: self.update_status("Analizando", c))
+            self.window.after(0, lambda c=self.connection_count: self.update_status("Capturando", c))
             self.plot_timestamps.append(packet_data['timestamp'])
             self.plot_data.append(packet_data['size'] / 1024) 
             
@@ -482,5 +519,9 @@ class NetworkAnalyzer:
         if self.pcap_capture_active and self.pcap_writer:
             self.pcap_writer.close()
             self.pcap_writer = None
+        
+        #if self.sniffer_manager:
+            #self.sniffer_manager.stop()
+
         self.stop_monitoring()
         self.window.destroy() 
