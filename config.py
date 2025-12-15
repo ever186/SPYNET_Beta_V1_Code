@@ -33,8 +33,9 @@ REQUIRED_PACKAGES = {
     'sklearn': 'scikit-learn',
     'numpy': 'numpy',
     'joblib': 'joblib',
-    # --- ¡NUEVAS DEPENDENCIAS DE IA! --- #Proximamente
+    # --- ¡NUEVAS DEPENDENCIAS DE IA
     'tensorflow': 'tensorflow',
+    'keras': 'keras',
     'pandas': 'pandas'
 }
 
@@ -214,4 +215,5 @@ TAG_ANOMALY = 'anomaly'
 VIRUSTOTAL_API_KEY_DEFAULT = ""
 
 VIRUSTOTAL_API_URL = "https://www.virustotal.com/api/v3"
+
 
