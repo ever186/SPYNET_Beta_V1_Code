@@ -38,7 +38,6 @@ REQUIRED_PACKAGES = {
     'pandas': 'pandas',
     'keras': 'keras',
     'h5py': 'h5py',
-    'imagemagick': 'imagemagick',
 }
 
 # ==============================================================================
@@ -217,6 +216,7 @@ TAG_ANOMALY = 'anomaly'
 VIRUSTOTAL_API_KEY_DEFAULT = ""
 
 VIRUSTOTAL_API_URL = "https://www.virustotal.com/api/v3"
+
 
 
 
