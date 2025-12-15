@@ -34,10 +34,10 @@ class NetworkGraphTab:
         self.fig_net = Figure(figsize=(8, 6), dpi=100)
         self.ax_net = None # Se inicializará al generar el gráfico
         self.canvas_net = FigureCanvasTkAgg(self.fig_net, master=parent_frame)
-        self.canvas_net.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        self.canvas_net.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=False)
 
         btn_frame = tk.Frame(parent_frame, bg="white")
-        btn_frame.pack(fill=tk.X, side=tk.BOTTOM, pady=5)
+        btn_frame.pack(fill=tk.X, side=tk.BOTTOM, pady=(10, 50), padx=(10, 10), expand=False)
         
         update_btn = tk.Button(btn_frame, text="Generar/Actualizar Gráfico de Red", command=self.update_network_graph)
         update_btn.pack()
