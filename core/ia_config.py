@@ -42,13 +42,10 @@ class IAConfig:
     # IPs seguras a considerar (LISTA BLANCA)
 
     SAFE_HOSTS = [
-    "13.107.",     # Microsoft frontdoor
-    "20.",         # Azure
-    "40.",         # Azure CDN
-    "52.",         # Microsoft cloud
+        "13.107.0.0/16",  # Usar CIDR notation
+        "20.0.0.0/8"
     ]
-
-
+    
     # Umbral de confianza para puertos seguros
     SAFE_PORT_CONFIDENCE = 0.80
     
@@ -130,4 +127,5 @@ def validate_config():
 
 # Ejecutar validación al importar
 if __name__ == "__main__":
+
     validate_config()
