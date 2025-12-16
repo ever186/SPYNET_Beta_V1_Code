@@ -1,11 +1,22 @@
+# Core networking & security
 scapy>=2.5.0
-tensorflow>=2.12.0
-keras>=2.12.0
-matplotlib>=3.7.0
-networkx>=3.1
-maxminddb>=2.2.0
-requests>=2.31.0
-joblib>=1.3.0
-pandas>=2.0.0
-numpy>=1.24.0
-scikit-learn>=1.3.0
+
+# Machine Learning
+tensorflow>=2.15.0 ; platform_system != "Darwin"
+tensorflow-macos>=2.15.0 ; platform_system == "Darwin"
+
+keras>=2.15.0
+
+# Data science
+numpy>=1.26.0
+pandas>=2.2.0
+scikit-learn>=1.4.0
+joblib>=1.4.0
+
+# Visualization & graphs
+matplotlib>=3.9.0
+networkx>=3.3
+
+# Threat intelligence / geoip
+maxminddb>=2.6.0
+requests>=2.32.0
