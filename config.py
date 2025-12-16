@@ -167,21 +167,6 @@ SECONDARY_BG_COLOR = "#5b5f61"
 TEXT_COLOR = '#ecf0f1'
 ACCENT_COLOR = "#5d5f62"
 
-# ==============================================================================
-# PAQUETES REQUERIDOS
-# ==============================================================================
-REQUIRED_PACKAGES = {
-    'scapy': 'scapy',
-    'psutil': 'psutil',
-    'matplotlib': 'matplotlib',
-    'PIL': 'Pillow',
-    'maxminddb': 'maxminddb',
-    'requests': 'requests',
-    'networkx': 'networkx',
-    'sklearn': 'scikit-learn',
-    'numpy': 'numpy',
-    'joblib': 'joblib'
-}
 
 # ==============================================================================
 # CONFIGURACIÓN DE CAPTURA PCAP
@@ -216,6 +201,7 @@ TAG_ANOMALY = 'anomaly'
 VIRUSTOTAL_API_KEY_DEFAULT = ""
 
 VIRUSTOTAL_API_URL = "https://www.virustotal.com/api/v3"
+
 
 
 
