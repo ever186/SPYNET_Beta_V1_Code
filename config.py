@@ -172,9 +172,9 @@ REQUIRED_PACKAGES = {
     'numpy': 'numpy',
     'joblib': 'joblib',
     #'pcapy': 'pcapy',
-    'tensorflow': 'tensorflow',
+    #'tensorflow': 'tensorflow',
     'pandas': 'pandas',
-    'keras': 'keras',
+    #'keras': 'keras',
     'h5py': 'h5py',
 }
 
@@ -210,6 +210,7 @@ TAG_ANOMALY = 'anomaly'
 # ==============================================================================
 VIRUSTOTAL_API_KEY_DEFAULT = ""
 VIRUSTOTAL_API_URL = "https://www.virustotal.com/api/v3"
+
 
 
 
