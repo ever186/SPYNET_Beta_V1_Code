@@ -4,6 +4,7 @@ Centraliza todas las constantes y configuraciones del sistema
 """
 
 import os
+import platform
 
 # ==============================================================================
 # RUTAS Y DIRECTORIOS
@@ -14,31 +15,9 @@ GEOIP_DB_PATH = os.path.join(SCRIPT_DIR, 'assets', 'geoip', 'GeoLite2-City.mmdb'
 
 # --- ¡CAMBIO AQUÍ! ---
 # IA_MODEL_PATH = os.path.join(SCRIPT_DIR, "modelo_ia.pkl") # <-- Ruta antigua
-IA_MODEL_PATH = os.path.join(SCRIPT_DIR, "modelo_intrusion_MLP.h5") # <-- Nueva IA
-IA_SCALER_PATH = os.path.join(SCRIPT_DIR, "scaler_full.pkl") # <-- ¡NUEVO Y VITAL!
+IA_MODEL_PATH = os.path.join(SCRIPT_DIR, "modelo_intrusion_MLP.h5")
+IA_SCALER_PATH = os.path.join(SCRIPT_DIR, "scaler_full.pkl") 
 
-# ... (El resto de tus rutas)
-
-# ==============================================================================
-# PAQUETES REQUERIDOS
-# ==============================================================================
-REQUIRED_PACKAGES = {
-    'scapy': 'scapy',
-    'psutil': 'psutil',
-    'matplotlib': 'matplotlib',
-    'PIL': 'Pillow',
-    'maxminddb': 'maxminddb',
-    'requests': 'requests',
-    'networkx': 'networkx',
-    'sklearn': 'scikit-learn',
-    'numpy': 'numpy',
-    'joblib': 'joblib',
-    #'pcapy': 'pcapy',
-    'tensorflow': 'tensorflow',
-    'pandas': 'pandas',
-    'keras': 'keras',
-    'h5py': 'h5py',
-}
 
 # ==============================================================================
 # CONFIGURACIÓN DE RED
@@ -51,11 +30,11 @@ COMMON_SCAN_PORTS = [
     143, 161, 162, 179, 389, 443, 445, 464, 500,
     512, 513, 514, 520, 521, 554, 587, 631, 636,
     860, 873, 902, 903, 989, 990, 993, 995,
-    1025, 1026, 1027, 1028, 1029, 1234,
+    1025, 1026, 1027, 1028, 1029,
     1433, 1521, 1701, 1723, 1812, 1813, 1883, 2049,
     2375, 2376, 2483, 2484, 2948, 3260, 3306, 3389,
-    3478, 4369, 4444, 4445, 4786, 5000, 5060, 5061, 5432, 
-    5500, 5601, 5672, 5683, 5900, 5984, 5985, 5986, 6379,
+    3478, 4369, 4786, 5000, 5060, 5061, 5432, 5500,
+    5601, 5672, 5683, 5900, 5984, 5985, 5986, 6379,
     6443, 6514, 6667, 7000, 7001, 7077, 7199, 7337,
     7443, 7474, 7547, 8000, 8001, 8008, 8080, 8081,
     8086, 8087, 8161, 8200, 8333, 8443, 8500, 8600,
@@ -167,6 +146,37 @@ SECONDARY_BG_COLOR = "#5b5f61"
 TEXT_COLOR = '#ecf0f1'
 ACCENT_COLOR = "#5d5f62"
 
+# Selección de fuente según el sistema operativo
+if platform.system() == "Windows":
+    MAIN_FONT = ("Segoe UI", 10)
+    BOLD_FONT = ("Segoe UI", 10, "bold")
+elif platform.system() == "Darwin":  # macOS
+    MAIN_FONT = ("Helvetica Neue", 12)
+    BOLD_FONT = ("Helvetica Neue", 12, "bold")
+else:  # Linux y otros
+    MAIN_FONT = ("Ubuntu", 10)
+    BOLD_FONT = ("Ubuntu", 10, "bold")
+
+# ==============================================================================
+# PAQUETES REQUERIDOS
+# ==============================================================================
+REQUIRED_PACKAGES = {
+    'scapy': 'scapy',
+    'psutil': 'psutil',
+    'matplotlib': 'matplotlib',
+    'PIL': 'Pillow',
+    'maxminddb': 'maxminddb',
+    'requests': 'requests',
+    'networkx': 'networkx',
+    'sklearn': 'scikit-learn',
+    'numpy': 'numpy',
+    'joblib': 'joblib',
+    #'pcapy': 'pcapy',
+    'tensorflow': 'tensorflow',
+    'pandas': 'pandas',
+    'keras': 'keras',
+    'h5py': 'h5py',
+}
 
 # ==============================================================================
 # CONFIGURACIÓN DE CAPTURA PCAP
@@ -199,8 +209,8 @@ TAG_ANOMALY = 'anomaly'
 # VIRUSTOTAL
 # ==============================================================================
 VIRUSTOTAL_API_KEY_DEFAULT = ""
-
 VIRUSTOTAL_API_URL = "https://www.virustotal.com/api/v3"
+
 
 
 
