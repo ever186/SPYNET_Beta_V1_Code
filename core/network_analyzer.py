@@ -18,6 +18,7 @@ from utils.file_operations import save_session_data, load_session_data, export_c
 from utils.geoip_handler import GeoIPHandler
 from core.anomaly_detector import AIAnomalyDetector
 from core.packet_handler import PacketHandler
+from core.session_manager import SessionManager
 from ui.main_window import setup_menubar, setup_interface
 
 from core.sniffer_manager import SnifferManager
@@ -131,6 +132,9 @@ class NetworkAnalyzer:
 
         #  INICIAR HILO DE IA EN SEGUNDO PLANO
         self.start_ai_thread()
+
+        # session TCP
+        self.session_manager = SessionManager()
 
         # Soporte para línea de comandos
         if len(sys.argv) > 1:
@@ -311,6 +315,10 @@ class NetworkAnalyzer:
             if self.connection_count % 10 == 0:
                 self.window.after(0, self.viz_tab_handler.update_statistics)
 
+            session_info = self.session_manager.update(packet)
+            if session_info and session_info.host:
+                print(f"[SESSION] New session: {session_info.host}")
+                pass
     # ==========================================================================
     # IMPORTACIÓN PCAP (CON ANÁLISIS DE IA OPCIONAL)
     # ==========================================================================
