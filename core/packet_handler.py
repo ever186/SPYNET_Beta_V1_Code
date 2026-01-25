@@ -50,7 +50,7 @@ class PacketHandler:
         if ip in self.dns_cache: return self.dns_cache[ip]
         # Solo resolver IPs públicas para no saturar con tráfico local
         if ip not in self.resolving and "." in ip:
-            if not (ip.startswith("192.168.") or ip.startswith("10.") or ip.startswith("172.")):
+            if not (ip.startswith("192.168.")):
                 self.resolving.add(ip)
                 threading.Thread(target=self._async_resolve, args=(ip,), daemon=True).start()
         return ip
@@ -180,3 +180,4 @@ class PacketHandler:
             }
         except:
             return None
+
