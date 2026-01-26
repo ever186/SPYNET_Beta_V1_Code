@@ -193,8 +193,8 @@ DASHBOARD_SNAPSHOT_FORMAT = "dashboard_%Y%m%d_%H%M%S.png"
 # ==============================================================================
 # TIMEOUTS Y LÍMITES
 # ==============================================================================
-NETWORK_SCAN_TIMEOUT = 0  # segundos
-PORT_SCAN_TIMEOUT = 0  # segundos
+NETWORK_SCAN_TIMEOUT = 5  # segundos
+PORT_SCAN_TIMEOUT = 1  # segundos
 SNIFF_TIMEOUT = 0         # segundos
 
 # ==============================================================================
@@ -210,6 +210,7 @@ TAG_ANOMALY = 'anomaly'
 # ==============================================================================
 VIRUSTOTAL_API_KEY_DEFAULT = ""
 VIRUSTOTAL_API_URL = "https://www.virustotal.com/api/v3"
+
 
 
 
