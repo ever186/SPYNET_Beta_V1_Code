@@ -105,9 +105,6 @@ python main.py
 sudo python3 main.py
 El instalador automático verificará y descargará todas las dependencias necesarias.
 Instalación Manual
-bash# 1. Crear entorno virtual (opcional pero recomendado)
-python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
 
 # 2. Instalar dependencias
 pip install -r requirements.txt
