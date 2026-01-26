@@ -79,11 +79,23 @@ Requisitos Previos
 Python 3.8+
 Privilegios de Administrador (requerido para captura de paquetes)
 Windows/Linux/macOS compatible
-
+# 1 Clonar el repositorio 
 Instalación Automática (Recomendada)
-bash# 1. Clonar el repositorio
 git clone https://github.com/ever186/spynet.git
 cd spynet
+
+# recomendado !!!!
+```bash
+python -m venv venv
+```
+## para windows
+```bash
+.\venv\Scripts\activate
+```
+## para mac o linus
+```bash
+source venv/bin/activate
+```
 
 # 2. Ejecutar como administrador
 # Windows (CMD como Admin):
@@ -304,12 +316,6 @@ python# Usar "Modo Rápido" al importar PCAP
 🤝 Contribuir
 ¡Las contribuciones son bienvenidas! Si encuentras un bug o tienes una idea:
 
-Fork el proyecto
-Crea tu rama de feature (git checkout -b feature/AmazingFeature)
-Commit tus cambios (git commit -m 'Add some AmazingFeature')
-Push a la rama (git push origin feature/AmazingFeature)
-Abre un Pull Request
-
 Reportar Bugs
 Abre un Issue con:
 
@@ -321,14 +327,13 @@ Sistema operativo y versión de Python
 
 📝 Roadmap
 
- Soporte para IPv6 completo
  Integración con más APIs de threat intelligence
  Exportar reportes a PDF
  Dashboard web (Flask/Django)
  Alertas por email/Telegram
- Entrenar modelo con datasets más recientes (CIC-IDS2018, CSE-CIC-IDS2018)
  Modo headless (CLI sin GUI)
  Docker containerization
+ EDR
 
 
 📜 Licencia
